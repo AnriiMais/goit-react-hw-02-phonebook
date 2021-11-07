@@ -1,0 +1,23 @@
+.contactForm {
+  padding: 10px;
+  background-image: repeating-radial-gradient(#a2ac, #2a2c, #abcd);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.contactInput {
+  margin: 20px 0;
+  height: 30px;
+}
+.addContactBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border-style: none;
+  color: rgb(231, 231, 231);
+  background-image: radial-gradient(rgb(255, 0, 242), #442688);
+}
+.contactLabel {
+  font-size: 18px;
+}

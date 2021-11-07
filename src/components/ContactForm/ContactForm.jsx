@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import shortId from 'shortid';
+import s from './ContactForm.module.scss';
 
 class ContactForm extends Component {
   static propTypes = {
@@ -11,7 +12,7 @@ class ContactForm extends Component {
     number: '',
   };
 
-  onFormSubmit = e => {
+  onSubmitContactForm = e => {
     e.preventDefault();
     this.props.onSubmitForm(this.makeContact());
     this.setState({ name: '', number: '' });
@@ -35,10 +36,12 @@ class ContactForm extends Component {
     const genIdNumber = shortId.generate();
     const genIdName = shortId.generate();
     const { name, number } = this.state;
-
+    //
     return (
-      <form onSubmit={this.onFormSubmit}>
-        <label htmlFor={genIdName}>Name</label>
+      <form className={s.contactForm} onSubmit={this.onSubmitContactForm}>
+        <label className={s.contactLabel} htmlFor={genIdName}>
+          Name
+        </label>
         <input
           id={genIdName}
           type="text"
@@ -48,9 +51,12 @@ class ContactForm extends Component {
           title="Имя может состоять только из букв, апострофа, тире и пробелов. 
   Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
           required
+          className={s.contactInput}
           onChange={this.onFormInputChange}
         />
-        <label htmlFor={genIdNumber}>Number</label>
+        <label className={s.contactLabel} htmlFor={genIdNumber}>
+          Number
+        </label>
         <input
           id={genIdNumber}
           type="tel"
@@ -59,9 +65,12 @@ class ContactForm extends Component {
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
+          className={s.contactInput}
           onChange={this.onFormInputChange}
         />
-        <button type="submit">Add contact</button>
+        <button className={s.addContactBtn} type="submit">
+          Add contact
+        </button>
       </form>
     );
   }

@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import './App.css';
-import data from './data.json';
-import ContactForm from './components/ContactForm';
-import Filter from './components/Filter';
-import ContactList from './components/ContactList';
+import './App.scss';
+import data from '../../data.json';
+import ContactForm from '../ContactForm';
+import Filter from '../Filter';
+import ContactList from '../ContactList';
 
 class App extends Component {
   state = {
     contacts: data,
     filter: '',
   };
-
   onInputChange = e => {
     const { name, value } = e.target;
     this.setState({ [name]: value });
@@ -38,7 +37,7 @@ class App extends Component {
       contact.name.toLowerCase().includes(filterNormalized),
     );
     return (
-      <div className="App">
+      <section className="App">
         <h1>Phonebook</h1>
         <ContactForm onSubmitForm={this.addContacts} />
         <h2 className="contacts">Contacts</h2>
@@ -47,7 +46,7 @@ class App extends Component {
           queryList={filterContacts}
           onDeleteContact={this.deleteContact}
         />
-      </div>
+      </section>
     );
   }
 }
