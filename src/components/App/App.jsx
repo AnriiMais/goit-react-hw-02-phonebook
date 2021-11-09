@@ -27,7 +27,8 @@ class App extends Component {
         return {
           contacts: [contact, ...prev.contacts],
         };
-      } else alert(`${inputName} is already in contacts!!!`);
+      } else
+        alert(`${inputName} with ${inputNumber} is already in contacts!!!`);
     });
   };
   deleteContact = selectId => {
